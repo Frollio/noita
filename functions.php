@@ -7,10 +7,12 @@
  * @package Noita
  */
 
-if ( ! defined( '_S_VERSION' ) ) {
+
+if ( ! defined( '_NOITA_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
-	define( '_S_VERSION', '1.0.0' );
+	define( '_NOITA_VERSION', '0.1.0' );
 }
+
 
 if ( ! function_exists( 'noita_setup' ) ) :
 	/**
@@ -104,6 +106,7 @@ if ( ! function_exists( 'noita_setup' ) ) :
 endif;
 add_action( 'after_setup_theme', 'noita_setup' );
 
+
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
  *
@@ -115,6 +118,7 @@ function noita_content_width() {
 	$GLOBALS['content_width'] = apply_filters( 'noita_content_width', 640 );
 }
 add_action( 'after_setup_theme', 'noita_content_width', 0 );
+
 
 /**
  * Register widget area.
@@ -136,14 +140,15 @@ function noita_widgets_init() {
 }
 add_action( 'widgets_init', 'noita_widgets_init' );
 
+
 /**
  * Enqueue scripts and styles.
  */
 function noita_scripts() {
-	wp_enqueue_style( 'noita-style', get_stylesheet_uri(), array(), _S_VERSION );
+	wp_enqueue_style( 'noita-style', get_stylesheet_uri(), array(), _NOITA_VERSION );
 	wp_style_add_data( 'noita-style', 'rtl', 'replace' );
 
-	wp_enqueue_script( 'noita-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'noita-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _NOITA_VERSION, true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -151,25 +156,30 @@ function noita_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'noita_scripts' );
 
+
 /**
  * Implement the Custom Header feature.
  */
 require get_template_directory() . '/inc/custom-header.php';
+
 
 /**
  * Custom template tags for this theme.
  */
 require get_template_directory() . '/inc/template-tags.php';
 
+
 /**
  * Functions which enhance the theme by hooking into WordPress.
  */
 require get_template_directory() . '/inc/template-functions.php';
 
+
 /**
  * Customizer additions.
  */
 require get_template_directory() . '/inc/customizer.php';
+
 
 /**
  * Load Jetpack compatibility file.
@@ -177,4 +187,3 @@ require get_template_directory() . '/inc/customizer.php';
 if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
-
