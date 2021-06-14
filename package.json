@@ -1,0 +1,43 @@
+{
+  "name": "noita",
+  "version": "0.0.1",
+  "description": "A Responsive, dark-coloured WordPress theme.",
+  "author": "Olli Ronkainen",
+  "license": "GPL-2.0",
+  "keywords": [
+    "WordPress",
+    "Theme"
+  ],
+  "homepage": "https://github.com/frollio/wp-noita-theme#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/frollio/wp-noita-theme.git"
+  },
+  "bugs": {
+    "url": "https://github.com/frollio/wp-noita-theme/issues"
+  },
+  "devDependencies": {
+    "@wordpress/scripts": "^16.1.0",
+    "dir-archiver": "^1.2.0",
+    "rtlcss": "^3.2.0"
+  },
+  "rtlcssConfig": {
+    "options": {
+      "autoRename": false,
+      "autoRenameStrict": false,
+      "blacklist": {},
+      "clean": true,
+      "greedy": false,
+      "processUrls": false,
+      "stringMap": []
+    },
+    "plugins": [],
+    "map": false
+  },
+  "scripts": {
+    "compile:rtl": "rtlcss style.css style-rtl.css",
+    "lint:scss": "wp-scripts lint-style 'sass/**/*.scss'",
+    "lint:js": "wp-scripts lint-js 'js/*.js'",
+    "bundle": "dir-archiver --src . --dest ../noita.zip --exclude .DS_Store .stylelintrc.json .eslintrc .git .gitattributes .github .gitignore README.md composer.json composer.lock node_modules vendor package-lock.json package.json .travis.yml phpcs.xml.dist sass style.css.map"
+  }
+}

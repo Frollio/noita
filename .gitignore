@@ -1,0 +1,8 @@
+
+.vscode
+composer.lock
+/node_modules
+noita.code-workspace
+package-lock.json
+style.css.map
+/vendor
